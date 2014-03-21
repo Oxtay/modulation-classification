@@ -29,5 +29,7 @@ def KCenter(Data,K):
         cluster(find(distnew-dist<0))=i
         dist(find(distnew-dist<0))=distnew(find(distnew-dist<0))
         dist1=dist
+        
+    return h
 
 
