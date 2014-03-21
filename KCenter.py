@@ -7,6 +7,8 @@ def KCenter(Data,K):
     # http://jwcn.eurasipjournals.com/content/2013/1/289
     
     # This performance is better than both k-means and k-means++ algorithms when initializing them randomly. The cost of performing this is also small compared to what it achieves as it scans the points in theta(N) time and this performance can also be improved.
+    
+    # This is a greedy approximation algorithm of metric k-center optimization problem and it achieves an approximation factor of 2 in k iterations.
 
     # randomly select an object as the initial point
     Init = ceil(rand(1)*size(Data,1))
