@@ -17,24 +17,25 @@ def KCenter(Data,K):
     #   Try each function separately and make sure it works
     Init = ceil(random.uniform(1)*Data.shape[0])
     h = zeros(K,Data.shape[1])
-    h[1,:] = Data(Init,:)
+    h[1,:] = Data[Init,:]
 
-
-    Euclid_dist = sum( (Data-repmat(h(1,:),[Data.shape[0],1])).^2,2 )
-    cluster = ones(1,Data.shape[0])
+    rawdist = (Data-repmat(h(1,:),[Data.shape[0],1])).^2
+    Euclid_dist = rawdist.sum(axis=1)
+    cluster = ones((1,Data.shape[0]), Float)
 
     Euclid_dist1=Euclid_dist
     Hind=Init
     for i in range(2,K):
-        Euclid_dist1(Hind)=-1
-        D = max(Euclid_dist1)
-        ind = find(Euclid_dist==D)
-        Hind=[Hind,ind(1)]
-        h(i,:) = Data(ind(1),:)
-        Euclid_distnew = sum( (Data-repmat(h(i,:),[Data.shape[0],1])).^2,2 )
-        cluster(find(Euclid_distnew-dist<0))=i
-        dist(find(distnew-dist<0))=distnew(find(distnew-dist<0))
-        dist1=dist
+        Euclid_dist1(Hind) = -1
+        D    = max(Euclid_dist1)
+        ind  = (Euclid_dist == D).nonzero()
+        Hind = [Hind,ind[1]]
+        h(i,:) = Data[ind[1],:]
+        newRawDist = (Data-repmat(h(i,:),[Data.shape[0],1])).^2
+        Euclid_distnew = newRawDist.sum(axis=1)
+        cluster((Euclid_distnew - dist < 0).nonzero())=i
+        Euclid_dist((Euclid_distnew - dist < 0).nonzero) = Euclid_distnew((Euclid_distnew - dist < 0).nonzero)
+        dist1=Euclid_dist
         
     return h
 
