@@ -32,10 +32,8 @@ u = KCenter(data,K)
 centroids, idx = kmeans2(data, K, iter = 10, 'Start', u)
 
 # some plotting using numpy's logical indexing
-plot(data[idx==0,0],data[idx==0,1],'ob',
-     data[idx==1,0],data[idx==1,1],'or')
-plot(centroids[:,0],centroids[:,1],'sg',markersize=8)
-show()
+# plot(data[idx==0,0],data[idx==0,1],'ob', data[idx==1,0],data[idx==1,1],'or')
+# plot(centroids[:,0],centroids[:,1],'sg',markersize=8)
 
 # Using k observations at random
 ##################
@@ -49,7 +47,5 @@ u = KCenter(data,K)
 centroids, idx = kmeans2(data, K, iter = 10, 'Start', 'uniform')
 
 # some plotting using numpy's logical indexing
-plot(data[idx==0,0],data[idx==0,1],'ob',
-     data[idx==1,0],data[idx==1,1],'or')
-plot(centroids[:,0],centroids[:,1],'sg',markersize=8)
-show()
+# plot(data[idx==0,0],data[idx==0,1],'ob', data[idx==1,0],data[idx==1,1],'or')
+# plot(centroids[:,0],centroids[:,1],'sg',markersize=8)

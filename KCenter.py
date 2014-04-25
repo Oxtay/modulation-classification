@@ -1,3 +1,5 @@
+import numpy as np
+import math
 import random
 def KCenter(Data,K):
     # k-center clustering method
@@ -15,8 +17,8 @@ def KCenter(Data,K):
     # To Do List
     #   Conversion of functions is not complete
     #   Try each function separately and make sure it works
-    Init = ceil(random.uniform(1)*Data.shape[0])
-    h = zeros(K,Data.shape[1])
+    Init = math.ceil(random.uniform(0,1)*Data.shape[0])
+    h = np.zeros(shape=(K,Data.shape[1]))
     h[1,:] = Data[Init,:]
 
     rawdist = (Data-repmat(h(1,:),[Data.shape[0],1])).^2
